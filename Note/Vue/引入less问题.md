@@ -30,3 +30,15 @@ Vue 中使用 less 报错 Module build failed: TypeError: loaderContext.getResol
 卸载原来的 `npm uninstall less-loader -D`
 
 安装指定版本 `npm install less-loader@4.1.0 --D`
+
+### less全局引入无效
+
+less 局部引入有用，但是全局引入的时候压根不生效：
+
+修改 build -> webpack.base.conf.js 里面的 module 内容
+
+```js
+{
+  test: /\.less$/
+},
+```

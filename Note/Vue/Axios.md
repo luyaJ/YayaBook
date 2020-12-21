@@ -157,3 +157,4 @@ router.beforeEach((to, from, next) => {
 })
 ```
 
+在网络状态不好的情况下，或者请求本身很慢的情况下切换路由试试~，可以在控制台 Network - Status 中看到红色的 cancel。请求被中断了！完工~

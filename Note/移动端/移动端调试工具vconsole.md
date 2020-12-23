@@ -50,3 +50,25 @@ if (process.env.ENV_CONFIG === 'test') { // 只在测试环境调用
   Vue.use(new VConsole())
 }
 ```
+
+## 添加点击事件
+
+项目中，我的头部组件是所有页面公用的，所以我在头部添加点击事件（点击5次唤起）：
+
+```js
+ <span class="header-text" @click="openVconsole">{{ headerText }}</span>
+
+openVconsole () {
+  ++this.count
+  let $dom = document.getElementById('__vconsole')
+  if (this.count === 5) {
+    $dom.style.display = 'block'
+   } else if (this.count === 10) {
+    $dom.style.display = 'none'
+    this.count = 0
+  }
+}
+```
+
+
+

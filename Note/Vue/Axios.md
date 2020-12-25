@@ -104,6 +104,7 @@ export function get(url, params = {}) {
 
 ```js
 import store from '../store'
+import axios from 'axios'
 
 // 请求拦截器
 axios.interceptors.request.use((config) => {
@@ -158,3 +159,38 @@ router.beforeEach((to, from, next) => {
 ```
 
 在网络状态不好的情况下，或者请求本身很慢的情况下切换路由试试~，可以在控制台 Network - Status 中看到红色的 cancel。请求被中断了！完工~
+
+### 5.formData请求格式
+
+`multipart/form-data` 是基于 post 方法来传递数据的，并且其请求内容格式为 `Content-Type: multipart/form-data`，用来指定请求内容的数据编码格式。
+
+```js
+import axios from 'axios'
+
+export function formData (url, formData) {
+  return new Promise((resolve) => {
+    let config = {
+      headers: {'Content-Type': 'multipart/form-data'}
+    }
+    axios.post(url, formData, config).then((response) => {
+      resolve(response)
+    }).catch((error) => {
+      resolve(error)
+    })
+  })
+}
+
+// 请求
+let formData = new FormData()
+formData.append('name', this.formGoodsCategoryAdd.name)
+formData.append('parentName', this.formGoodsCategoryAdd.parentName)
+this.$formData('/api/system/category/add', formData).then((response) => {
+    this.loadingAdd = false
+    if (response.code === 200) {
+        this.showAddModal = false
+        this.$Message.success('新增成功')
+        this.getGoodCategoryData()
+    }
+})
+```
+

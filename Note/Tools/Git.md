@@ -19,7 +19,7 @@ git pull origin main --allow-unrelated-histories # git pull origin main会报错
 git push origin main
 ```
 
-### 2. 删除分支
+### 2.删除分支
 
 ```bash
 # 删除本地master分支
@@ -28,5 +28,19 @@ git branch -d master
 git push origin :master
 ```
 
+### 3.删除远程仓库文件或目录
 
+```bash
+# 删除a目录下的2.txt文件
+git rm -r --cached a/2.txt
+
+# 删除a目录
+git rm -r --cached a
+
+# 提交
+git commit -m "xxxxx"
+git push
+```
+
+删除本地仓库中的文件 `git rm --cached a.txt` （删除本地文件夹方法一样）
 

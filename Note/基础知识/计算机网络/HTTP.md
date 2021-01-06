@@ -121,6 +121,12 @@ GET 方法是安全的，而 POST 不是，因为 POST  的目的是传输实体
 
 在正确实现的条件下，只有 POST 方法不是幂等的。 
 
+## 其他区别
+
+1.get 产生一个 tcp 数据包，post 产生两个。
+
+2.get 请求会把 headers 和 data 数据一起发送出去。post 请求时，浏览器先发送 headers，服务器100 继续，浏览器再发送 data。
+
 # 三、HTTPS
 
 HTTP 有以下安全性问题：

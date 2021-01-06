@@ -1,15 +1,7 @@
 # Vue实现复制功能
 
-## 1.安装
+官方文档说的很清楚：
+[vue-clipboard2 官方文档](https://vue-clipboard2.inndy.tw/)
 
-```js
-npm install clipboard --save 
-```
 
-## 2.使用
-
-```js
-// 局部引入
-import Clipboard from 'clipboard'
-```
 

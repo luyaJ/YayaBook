@@ -70,3 +70,16 @@ formMarket: {
 如果报错某个模块不存在，可能是版本问题。
 
 12月8日安装时 `"ant-design-vue": "^2.0.0-rc.3"`，过了20天已经更新到了 `"ant-design-vue": "^2.0.0-rc.6"`。重新安装下包就好了。
+
+## 三、表单数字校验失效问题
+
+给 `rules` 添加 `type: 'number'`
+
+```js
+rulesSamplingTask: {
+    boothId: [{ required: true, message: '请输入摊位号', trigger: 'blur', type: 'number' }],
+}
+```
+
+
+

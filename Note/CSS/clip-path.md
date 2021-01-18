@@ -8,6 +8,13 @@
 
 > 创建多角形语法：`-webkit-clip-path: polygon(x-axis y-axios x-axis y-axis, ...)` 
 
+<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="luyajiang" data-slug-hash="wvzQzBR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="clip-path-polygon">
+  <span>See the Pen <a href="https://codepen.io/luyajiang/pen/wvzQzBR">
+  clip-path-polygon</a> by luyaJ (<a href="https://codepen.io/luyajiang">@luyajiang</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
 <iframe height="265" style="width: 100%;" scrolling="no" title="wvzQzBR" src="https://codepen.io/luyajiang/embed/wvzQzBR?height=265&theme-id=dark&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href='https://codepen.io/luyajiang/pen/wvzQzBR'>wvzQzBR</a> by luyaJ
   (<a href='https://codepen.io/luyajiang'>@luyajiang</a>) on <a href='https://codepen.io'>CodePen</a>.

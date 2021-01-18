@@ -10,15 +10,18 @@
 
 下面的实例 `html` 部分代码都是 `<div class="box"></div>`。
 
-<iframe
-  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=3024-night&wt=none&l=auto&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=.box%2520%257B%250A%2520%2520width%253A%2520200px%253B%250A%2520%2520height%253A%2520200px%253B%250A%2520%2520background%253A%2520%2523000%2520url%28%27https%253A%252F%252Fimages.unsplash.com%252Fphoto-1610564413021-5c3389add1a8%253Fixid%253DMXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHw%25253D%2526ixlib%253Drb-1.2.1%2526auto%253Dformat%2526fit%253Dcrop%2526w%253D500%2526q%253D60%27%29%253B%250A%2520%2520background-size%253A%2520cover%253B%250A%2520%2520margin%253A%252028px%2520auto%253B%250A%2520%2520-webkit-clip-path%253A%2520polygon%280%2520100%2525%252C%252050%2525%25200%252C%2520100%2525%2520100%2525%29%253B%250A%257D"
-  style="width: 1024px; height: 366px; border:0; transform: scale(1); overflow:hidden;"
-  sandbox="allow-scripts allow-same-origin">
-</iframe>
+```css
+.box {
+  width: 200px;
+  height: 200px;
+  background: #000 url('https://images.unsplash.com/photo-1610564413021-5c3389add1a8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+  background-size: cover;
+  margin: 28px auto;
+  -webkit-clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+```
 
-<span>See the Pen <a href="https://codepen.io/luyajiang/pen/wvzQzBR">
-  clip-path-polygon</a>
-  on <a href="https://codepen.io">CodePen</a>.</span>
+[clip-path-polygon demo](https://codepen.io/luyajiang/pen/wvzQzBR) in codepen
 
 
 分析：我们以一个正方形的左上角作为原点 `x: 0, y: 0`。那么左下角就是 `x:0, y: 100%`，右下角是 `x: 100%, y:100%`，右上角是 `x: 100%, y: 0`。
@@ -31,13 +34,34 @@
 
 > 创建圆形语法：`-webkit-clip-path: circle(半径 at x-axis y-axis)` 
 
-<span>See the Pen <a href="https://codepen.io/luyajiang/pen/QWKJKxb">
-  clip-path-circle</a> on <a href="https://codepen.io">CodePen</a>.</span>
+```css
+.box {
+	width: 200px;
+    height: 200px;
+    background: #000 url('https://images.unsplash.com/photo-1610564413021-5c3389add1a8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    margin: 28px auto;
+    -webkit-clip-path: circle(50% at 50% 50%);
+}
+```
+
+[clip-path-circle demo](https://codepen.io/luyajiang/pen/QWKJKxb) in codepen
 
 
 ## 椭圆
 
 > 创建椭圆语法：`-webkit-clip-path: ellipse(x轴半径 y轴半径 at x-axis y-axis)` 
+
+```css
+.box {
+    width: 200px;
+    height: 200px;
+    background: #000 url('https://images.unsplash.com/photo-1610564413021-5c3389add1a8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    margin: 28px auto;
+    -webkit-clip-path: ellipse(40% 20% at 50% 50%);
+}
+```
 
 ## Inset
 
@@ -45,18 +69,41 @@
 
 ## 自定义文本框
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="clip-path-polygon2" src="https://codepen.io/luyajiang/embed/NWREdBO?height=265&theme-id=dark&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/luyajiang/pen/NWREdBO'>clip-path-polygon2</a> by luyaJ
-  (<a href='https://codepen.io/luyajiang'>@luyajiang</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+```css
+.box {
+    width: 200px;
+    height: 200px;
+    background: #000 url('https://images.unsplash.com/photo-1610564413021-5c3389add1a8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    margin: 28px auto;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0 75%);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0 75%);
+    /*  五角星  */
+    /*     -webkit-clip-path: polygon(50% 0%, 63% 38%, 100% 38%, 69% 59%, 82% 100%, 50% 75%, 18% 100%, 31% 59%, 0 38%, 37% 38%); */
+}
+```
+
+[clip-path-polygon2 demo](https://codepen.io/luyajiang/pen/NWREdBO) in codepen
+
 
 ## 动画
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="clip-path-polygon-hover" src="https://codepen.io/luyajiang/embed/OJRapRr?height=265&theme-id=dark&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/luyajiang/pen/OJRapRr'>clip-path-polygon-hover</a> by luyaJ
-  (<a href='https://codepen.io/luyajiang'>@luyajiang</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+```css
+.box {
+    width: 200px;
+    height: 200px;
+    background: #000 url('https://images.unsplash.com/photo-1610564413021-5c3389add1a8?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+    background-size: cover;
+    margin: 28px auto;
+    -webkit-clip-path: polygon(0 20%, 0% 0%, 50% 0%, 80% 0, 100% 0%, 100% 50%, 100% 80%, 100% 100%, 50% 100%, 0% 100%, 0 80%, 0% 50%);
+    transition: -webkit-clip-path 0.5s;
+}
+.box:hover {
+    -webkit-clip-path: polygon(0% 20%, 20% 0%, 50% 30%, 80% 0%, 100% 20%, 70% 50%, 100% 80%, 80% 100%, 50% 70%, 20% 100%, 0% 80%, 30% 50%);
+}
+```
 
+[clip-path-polygon-hover demo](https://codepen.io/luyajiang/pen/OJRapRr) in codepen
 
 参考文章：
 

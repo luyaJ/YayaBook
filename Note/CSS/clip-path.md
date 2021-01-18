@@ -8,17 +8,18 @@
 
 > 创建多角形语法：`-webkit-clip-path: polygon(x-axis y-axios x-axis y-axis, ...)` 
 
-<p class="codepen" data-height="265" data-theme-id="dark" data-default-tab="css,result" data-user="luyajiang" data-slug-hash="wvzQzBR" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="clip-path-polygon">
-  <span>See the Pen <a href="https://codepen.io/luyajiang/pen/wvzQzBR">
-  clip-path-polygon</a> by luyaJ (<a href="https://codepen.io/luyajiang">@luyajiang</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+下面的实例 `html` 部分代码都是 `<div class="box"></div>`。
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="wvzQzBR" src="https://codepen.io/luyajiang/embed/wvzQzBR?height=265&theme-id=dark&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/luyajiang/pen/wvzQzBR'>wvzQzBR</a> by luyaJ
-  (<a href='https://codepen.io/luyajiang'>@luyajiang</a>) on <a href='https://codepen.io'>CodePen</a>.
+<iframe
+  src="https://carbon.now.sh/embed?bg=rgba%28171%2C+184%2C+195%2C+1%29&t=3024-night&wt=none&l=auto&ds=true&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=14px&lh=133%25&si=false&es=2x&wm=false&code=.box%2520%257B%250A%2520%2520width%253A%2520200px%253B%250A%2520%2520height%253A%2520200px%253B%250A%2520%2520background%253A%2520%2523000%2520url%28%27https%253A%252F%252Fimages.unsplash.com%252Fphoto-1610564413021-5c3389add1a8%253Fixid%253DMXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxNXx8fGVufDB8fHw%25253D%2526ixlib%253Drb-1.2.1%2526auto%253Dformat%2526fit%253Dcrop%2526w%253D500%2526q%253D60%27%29%253B%250A%2520%2520background-size%253A%2520cover%253B%250A%2520%2520margin%253A%252028px%2520auto%253B%250A%2520%2520-webkit-clip-path%253A%2520polygon%280%2520100%2525%252C%252050%2525%25200%252C%2520100%2525%2520100%2525%29%253B%250A%257D"
+  style="width: 1024px; height: 366px; border:0; transform: scale(1); overflow:hidden;"
+  sandbox="allow-scripts allow-same-origin">
 </iframe>
+
+<span>See the Pen <a href="https://codepen.io/luyajiang/pen/wvzQzBR">
+  clip-path-polygon</a>
+  on <a href="https://codepen.io">CodePen</a>.</span>
+
 
 分析：我们以一个正方形的左上角作为原点 `x: 0, y: 0`。那么左下角就是 `x:0, y: 100%`，右下角是 `x: 100%, y:100%`，右上角是 `x: 100%, y: 0`。
 
@@ -30,10 +31,9 @@
 
 > 创建圆形语法：`-webkit-clip-path: circle(半径 at x-axis y-axis)` 
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="clip-path-circle" src="https://codepen.io/luyajiang/embed/QWKJKxb?height=265&theme-id=dark&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/luyajiang/pen/QWKJKxb'>clip-path-circle</a> by luyaJ
-  (<a href='https://codepen.io/luyajiang'>@luyajiang</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
+<span>See the Pen <a href="https://codepen.io/luyajiang/pen/QWKJKxb">
+  clip-path-circle</a> on <a href="https://codepen.io">CodePen</a>.</span>
+
 
 ## 椭圆
 

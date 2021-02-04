@@ -81,5 +81,9 @@ rulesSamplingTask: {
 }
 ```
 
+* 日期选择框：添加 `type: Object`
 
+## 四、自定义上传图片
+
+上传成功，但是进度条一直loading，解决：[上传时一直loading加载的问题](https://blog.csdn.net/LittleBlackyoyoyo/article/details/104810242)
 

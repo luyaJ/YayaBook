@@ -49,3 +49,7 @@ console.log(JSON.stringify(json, null, '\t'));
 	"age": 23
 }
 ```
+
+## 请求后端返回数据得到[object object]
+
+使用 `JSON.stringify()` 将 JavaScript 对象转化成 json 字符串。

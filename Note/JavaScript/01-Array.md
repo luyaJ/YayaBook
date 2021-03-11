@@ -169,76 +169,40 @@ for (let [index, elem] of ['a', 'b'].entries()) {
 
 ## 操作数组
 
-```js
-var arr = ['luya', 'xixi'];
-```
+### 增
 
-1.添加到数组的末尾
+1.push()
 
-```js
-var newArrLength = arr.push('haha');
-// newArrLength: 3
-// arr: ["luya", "xixi", "haha"]
-```
-
-2.删除数组末尾的元素
+> 接收任意数量的参数，并将它们添加至数组尾部，返回数组的最新长度
 
 ```js
-var last = arr.pop();
-// last: "haha"
-// arr: ["luya", "xixi"]
+let arr = [];
+let count = arr.push("luya", "xixi");
+console.log(count) // 2
 ```
 
-3.删除数组最前面的元素
+2.unshift()
+
+> 在数组头部添加任意多个值，返回新的数组长度
 
 ```js
-var first = arr.shift();
-// first: "luya"
-// arr: ["xixi"]
+let arr = new Array();
+let count = arr.unshift("luya", "xixi");
+console.log(count) // 2
 ```
 
-4.添加元素到数组最前面
+3.splice()
+
+> 传入三个参数，分别是开始位置、0（要删除的元素数量）、插入的元素，返回空数组
 
 ```js
-var newLength = arr.unshift("hello");
-// newLength: 2
-// arr: ["hello", "xixi"]
+let arr = ["luya", "xixi", "test"];
+let newArr = colors.splice(1, 0, "xiao", "ming")
+console.log(arr) // ["luya", "xiao", "ming", "xixi", "test"]
+console.log(newArr) // []
 ```
 
-5.找到某个元素在数组中的索引
 
-```js
-var pos = arr.indexOf('xixi');
-// pos: 1
-```
-
-6.通过索引删除某个元素或多个元素
-
-```js
-arr.push('hahaha');
-// arr: ["hello", "xixi", "hahaha"]
-
-var removedItem = arr.splice(pos, 1);
-// removedItem: ["xixi"]
-```
-
-7.复制一个数组
-
-```js
-var copyArr = arr.slice();
-// copyArr: ["hello", "hahaha"]
-```
-
-8.获取数组中的最后一项
-
-```js
-var arr = [0, 1, 2, 3, 4, 5, 6, 7];
-var item = arr.slice(-1);
-// item: [7]
-
-var iten = arr.slice(-2);
-// item: [6, 7]
-```
 
 ## 其他
 

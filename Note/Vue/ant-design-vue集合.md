@@ -87,3 +87,63 @@ rulesSamplingTask: {
 
 上传成功，但是进度条一直loading，解决：[上传时一直loading加载的问题](https://blog.csdn.net/LittleBlackyoyoyo/article/details/104810242)
 
+## 五、对话框
+
+通用组件文件名 `CustomModal.vue`：
+
+```bash
+<template>
+  <a-modal
+    :visible="visible"
+    :confirm-loading="confirmLoading"
+    @ok="handleOk"
+    @cancel="visible = false"
+  >
+    <p>123</p>
+  </a-modal>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      visible: false,
+      confirmLoading: false
+    }
+  },
+  methods: {
+    open () {
+      this.visible = true
+    },
+    handleOk () {
+      this.$emit('submit')
+    }
+  }
+}
+</script>
+```
+
+在其他组件中引入上面的对话框：
+
+```js
+<template>
+    // 打开弹窗的按钮
+    <button @click="handleOpen"></button>
+	// 引入公共弹层
+    <custom-modal ref="modalForm" @submit="submitReport"></custom-modal>
+</template>
+
+<script>
+export default {
+	methods: {
+        handleOpen () {
+            this.$refs.modalForm.open();
+        },
+        submitReport () {
+            // 弹窗按钮的点击事件
+        }
+    }
+}
+</script>
+```
+

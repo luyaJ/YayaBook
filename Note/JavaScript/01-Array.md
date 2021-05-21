@@ -202,7 +202,123 @@ console.log(arr) // ["luya", "xiao", "ming", "xixi", "test"]
 console.log(newArr) // []
 ```
 
+### 复制
 
+数组复制，顺便学习一下 `jest`：
+
+新建一个 `index.js` 文件：
+
+```js
+exports.cloneArrayBySpreadOperator = (arr) => {
+  return [...arr];
+};
+
+exports.cloneArrayByArrayFrom = (arr) => {
+  return Array.from(arr);
+};
+
+exports.cloneArrayByArraySlice = (arr) => {
+  return arr.slice();
+};
+
+exports.cloneArrayByArrayMap = (arr) => {
+  return arr.map(i => i);
+};
+
+exports.cloneArrayByArrayFilter = (arr) => {
+  return arr.filter(() => true);
+};
+
+exports.cloneArrayByObjectAssign = (arr) => {
+  return Object.assign([], arr);
+};
+
+exports.cloneArrayByArrayConcat = (arr) => {
+  return arr.concat([])
+};
+```
+
+```js
+const {
+  cloneArrayBySpreadOperator,
+  cloneArrayByArrayFrom,
+  cloneArrayByArraySlice,
+  cloneArrayByArrayMap,
+  cloneArrayByArrayFilter,
+  cloneArrayByObjectAssign,
+  cloneArrayByArrayConcat
+} = require('./index.js');
+
+it('spread operator', () => {
+  const arr = [1, 2, 3];
+  const newArr = cloneArrayBySpreadOperator(arr);
+  newArr[0] = 0;
+
+  expect(arr).not.toEqual(newArr);
+  expect(newArr).toEqual([0, 2, 3]);
+  expect(arr).toEqual([1, 2, 3]);
+});
+
+it('array from', () => {
+  const arr = [1, 2, 3];
+  const newArr = cloneArrayByArrayFrom(arr);
+  newArr[0] = 0;
+
+  expect(arr).not.toEqual(newArr);
+  expect(newArr).toEqual([0, 2, 3]);
+  expect(arr).toEqual([1, 2, 3]);
+});
+
+it('array slice', () => {
+  const arr = [1, 2, 3];
+  const newArr = cloneArrayByArraySlice(arr);
+  newArr[0] = 0;
+
+  expect(arr).not.toEqual(newArr);
+  expect(newArr).toEqual([0, 2, 3]);
+  expect(arr).toEqual([1, 2, 3]);
+});
+
+it('array map', () => {
+  const arr = [1, 2, 3];
+  const newArr = cloneArrayByArrayMap(arr);
+  newArr[0] = 0;
+
+  expect(arr).not.toEqual(newArr);
+  expect(newArr).toEqual([0, 2, 3]);
+  expect(arr).toEqual([1, 2, 3]);
+});
+
+it('array filter', () => {
+  const arr = [1, 2, 3];
+  const newArr = cloneArrayByArrayFilter(arr);
+  newArr[0] = 0;
+
+  expect(arr).not.toEqual(newArr);
+  expect(newArr).toEqual([0, 2, 3]);
+  expect(arr).toEqual([1, 2, 3]);
+});
+
+it('object assign', () => {
+  const arr = [1, 2, 3];
+  const newArr = cloneArrayByObjectAssign(arr);
+  newArr[0] = 0;
+
+  expect(arr).not.toEqual(newArr);
+  expect(newArr).toEqual([0, 2, 3]);
+  expect(arr).toEqual([1, 2, 3]);
+});
+
+it.only('arry concat', () => {
+  const arr = [1, 2, 3];
+  const newArr = cloneArrayByArrayConcat(arr);
+  newArr[0] = 0;
+
+  expect(arr).not.toEqual(newArr);
+  expect(newArr).toEqual([0, 2, 3]);
+  expect(arr).toEqual([1, 2, 3]);
+});
+```
 
 ## 其他
 

@@ -147,3 +147,39 @@ export default {
 </script>
 ```
 
+## 六、树相关
+
+### 1. 自定义树标题
+
+注意需要使用 `scopedSlots`。
+
+```js
+getTree() {
+    getAction(this.url.deviceTypeList, {}).then((res) => {
+        if (res.success) {
+            this.treeData[0].children = res.result
+        	res.result.forEach(item => {
+        		item.childLen = item.children ? item.children.length : 0
+        		item.scopedSlots = { title: 'custom'}
+        	})
+        }
+    })
+}
+```
+
+```html
+<a-tree
+        v-if="treeData.length"
+        ref="tree"
+        :defaultExpandAll="true"
+        :tree-data="treeData"
+        @select="onSelect"
+        @rightClick="onRightClick">
+    <template slot="custom" slot-scope="{title, childLen}">
+        <span>{{title}} ({{childLen}})</span>
+    </template>
+</a-tree>
+```
+
+
+

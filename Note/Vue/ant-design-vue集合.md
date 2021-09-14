@@ -2,7 +2,9 @@
 
 [官方文档](https://www.antdv.com/docs/vue/introduce-cn/)
 
-## 一、自定义表格横向滚动条样式
+## 一、表格
+
+### 1.自定义表格横向滚动条样式
 
 ```css
 .ant-table-body {
@@ -21,6 +23,82 @@
 }
 ```
 
+### 2.表格排序
+
+只需要升序和降序的功能，去除取消状态。由服务器排序。
+
+```js
+data() {
+  return {
+	sortedInfo: null,
+    saveSortedInfo: null,
+    sort: 'asc' // asc正序,desc倒序
+  }
+}
+
+computed: {
+  columns() {
+    let { sortedInfo } = this
+    sortedInfo = sortedInfo || {}
+    return [{
+      title: '序号',
+      slots: { customRender: 'index' },
+      width: 80
+    },
+    {
+      title: '登记人名',
+      dataIndex: 'applyName',
+      width: 100,
+      ellipsis: true
+    },
+    {
+      title: '进入工位时间',
+      dataIndex: 'createTime',
+      width: 170,
+      sorter: true,
+      sortOrder: sortedInfo.columnKey === 'createTime' && sortedInfo.order
+    }];
+  }
+}
+
+methods: {
+  pageChange (pagination, filters, sorter) {
+    this.sortedInfo = sorter
+    if (sorter.order === undefined) {
+      this.sortedInfo = this.saveSortedInfo
+    }
+    if (sorter.order === 'ascend') {
+      this.saveSortedInfo = sorter
+    }
+    
+    this.pagination = pagination
+    this.getData()
+  },
+  getData () {
+    if (!this.sortedInfo) {
+      this.sortedInfo = {
+        order: 'ascend',
+        columnKey: 'createTime'
+      }
+    }
+     
+    this.$post('/vw-shop/pc/station/queryStationRecord', {
+      site: this.searchList[0][0].value,
+      workshop: this.searchList[0][1].value,
+      thread: this.searchList[0][2].value,
+      position: this.searchList[0][3].value,
+      sort: !this.sortedInfo ? 'asc' : (this.sortedInfo.order === 'ascend' ? 'asc' : 'desc'),
+      pageNo: this.pagination.current,
+      pageSize: this.pagination.pageSize
+    }).then(res => {
+      let result = res.data
+      this.dataList = result.datas
+      this.pagination.total = result.pageResp.count
+    })
+  }
+}
+```
+
 ## 二、select
 
 #### 1.引入
@@ -32,7 +110,7 @@ import { Select } from 'ant-design-vue'
 const antd = {
   install: (Vue) => {
     Vue.component(Select.name, Select)
-      Vue.component(Select.name, Select)
+    Vue.component(Select.name, Select)
   }
 }
 export default antd
@@ -127,22 +205,22 @@ export default {
 
 ```js
 <template>
-    // 打开弹窗的按钮
-    <button @click="handleOpen"></button>
-	// 引入公共弹层
-    <custom-modal ref="modalForm" @submit="submitReport"></custom-modal>
+  // 打开弹窗的按钮
+  <button @click="handleOpen"></button>
+  // 引入公共弹层
+  <custom-modal ref="modalForm" @submit="submitReport"></custom-modal>
 </template>
 
 <script>
 export default {
-	methods: {
-        handleOpen () {
-            this.$refs.modalForm.open();
-        },
-        submitReport () {
-            // 弹窗按钮的点击事件
-        }
+  methods: {
+    handleOpen () {
+      this.$refs.modalForm.open();
+    },
+    submitReport () {
+      // 弹窗按钮的点击事件
     }
+  }
 }
 </script>
 ```
@@ -155,31 +233,28 @@ export default {
 
 ```js
 getTree() {
-    getAction(this.url.deviceTypeList, {}).then((res) => {
-        if (res.success) {
-            this.treeData[0].children = res.result
-        	res.result.forEach(item => {
-        		item.childLen = item.children ? item.children.length : 0
-        		item.scopedSlots = { title: 'custom'}
-        	})
-        }
-    })
+  getAction(this.url.deviceTypeList, {}).then((res) => {
+    if (res.success) {
+      this.treeData[0].children = res.result
+      res.result.forEach(item => {
+		item.childLen = item.children ? item.children.length : 0
+		item.scopedSlots = { title: 'custom'}
+	  })
+    }
+  })
 }
 ```
 
 ```html
 <a-tree
-        v-if="treeData.length"
-        ref="tree"
-        :defaultExpandAll="true"
-        :tree-data="treeData"
-        @select="onSelect"
-        @rightClick="onRightClick">
-    <template slot="custom" slot-scope="{title, childLen}">
-        <span>{{title}} ({{childLen}})</span>
-    </template>
+  v-if="treeData.length"
+  ref="tree"
+  :defaultExpandAll="true"
+  :tree-data="treeData"
+  @select="onSelect"
+  @rightClick="onRightClick">
+  <template slot="custom" slot-scope="{title, childLen}">
+    <span>{{title}} ({{childLen}})</span>
+  </template>
 </a-tree>
 ```
-
-
-

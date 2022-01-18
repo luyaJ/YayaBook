@@ -149,6 +149,28 @@ formMarket: {
 
 12月8日安装时 `"ant-design-vue": "^2.0.0-rc.3"`，过了20天已经更新到了 `"ant-design-vue": "^2.0.0-rc.6"`。重新安装下包就好了。
 
+#### 4.输入框不显示
+
+```bash
+<a-form-item label="业务子类型">
+    <a-select
+    v-model="configOrderSubTypeTemp"
+    placeholder="请选择业务子类型"
+    label-in-value
+    :disabled="queryParam.configOrderMainType ? false : true"
+    @dropdownVisibleChange="getConfigOrderSubTypeList"
+    @change="handleConfigOrderSubTypeChange"
+    >  
+    <a-select-option v-for="(item, index) in configOrderSubTypeList" :key="'sub'+index" :value="index%2==0 ? item.value+1 : item.value+2">{{item.label}}</a-select-option>
+    </a-select>
+</a-form-item>
+```
+
+在data中需要定义为对象，这样才可以正常显示
+```bash
+configOrderSubTypeTemp: { label: '', value: '' }
+```
+
 ## 三、表单数字校验失效问题
 
 给 `rules` 添加 `type: 'number'`

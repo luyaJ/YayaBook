@@ -154,13 +154,13 @@ formMarket: {
 ```bash
 <a-form-item label="业务子类型">
     <a-select
-    v-model="configOrderSubTypeTemp"
-    placeholder="请选择业务子类型"
-    label-in-value
-    :disabled="queryParam.configOrderMainType ? false : true"
-    @dropdownVisibleChange="getConfigOrderSubTypeList"
-    @change="handleConfigOrderSubTypeChange"
-    >  
+        v-model="configOrderSubTypeTemp"
+        placeholder="请选择业务子类型"
+        label-in-value
+        :disabled="queryParam.configOrderMainType ? false : true"
+        @dropdownVisibleChange="getConfigOrderSubTypeList"
+        @change="handleConfigOrderSubTypeChange"
+    >
     <a-select-option v-for="(item, index) in configOrderSubTypeList" :key="'sub'+index" :value="index%2==0 ? item.value+1 : item.value+2">{{item.label}}</a-select-option>
     </a-select>
 </a-form-item>
@@ -170,6 +170,36 @@ formMarket: {
 ```bash
 configOrderSubTypeTemp: { label: '', value: '' }
 ```
+
+#### 5.下拉搜索
+
+针对 `第4点：输入框不显示` 进行下拉搜索的优化
+
+```bas
+<a-select
+    v-model="configOrderSubTypeTemp"
+        placeholder="请选择业务子类型"
+        label-in-value
+        :disabled="queryParam.configOrderMainType ? false : true"
+        show-search
+        :getPopupContainer="(triggerNode) => triggerNode.parentNode"
+        :filter-option="filterOption"
+        @dropdownVisibleChange="getConfigOrderSubTypeList"
+        @change="handleConfigOrderSubTypeChange"
+    >
+    <a-select-option v-for="(item, index) in configOrderSubTypeList" :key="'sub'+index" :value="index%2==0 ? item.value+1 : item.value+2">{{item.label}}</a-select-option>
+</a-select>
+```
+
+在methods 添加一个方法：
+
+```bash
+filterOption(input, option) {
+	return (option.componentOptions.children[0].text.toLowerCase().indexOf(input.toLowerCase()) >= 0 )
+}
+```
+
+记住一定要写上 `filterOption` 这个方法，这样就实现了下拉框可以进行通过输入的内容进行模糊搜索。
 
 ## 三、表单数字校验失效问题
 

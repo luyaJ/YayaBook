@@ -18,3 +18,20 @@ crossorigin=""></script>
 ## 使用leaflet右键工具
 
 [Leaflet.contextmenu github](https://github.com/aratcliffe/Leaflet.contextmenu)
+
+## 折线
+
+[Leaflet.PolylineDecorator](https://github.com/bbecquet/Leaflet.PolylineDecorator)
+
+使用方法：（直接在html中引入）
+
+```bash
+<script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
+```
+
+
+
+* [绘制带箭头的线条（路径）](https://blog.csdn.net/zcylyzhi4/article/details/115317649)
+
+* [带箭头轨迹以及沿轨迹带方向的动态marker](https://www.jianshu.com/p/b38e65101bc2)
+* 

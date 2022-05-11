@@ -201,6 +201,43 @@ filterOption(input, option) {
 
 记住一定要写上 `filterOption` 这个方法，这样就实现了下拉框可以进行通过输入的内容进行模糊搜索。
 
+
+
+#### 6.滚动加载
+
+下拉框需要加载的数据太多时，会造成页面卡顿。
+
+```html
+<a-select v-decorator="['superiorPipelineId']" placeholder='请选择上级管线' @popupScroll="handlePopupScroll">
+    <a-select-option key="">请选择</a-select-option>
+    <a-select-option v-for='item in this.superiorPipelines' :key='item.id'>{{ item.pipelineName }}</a-select-option>
+</a-select>
+```
+
+```vue
+handlePopupScroll(e) {
+    let { target } = e
+    const dis = target.scrollHeight - target.offsetHeight
+    if (target.scrollTop < 5) { // 不确定为什么默认scrollTop是4
+    	this.pipelineParams.pageSize = 10
+    } else {
+    // 判断是否滑动到底部
+    if (target.scrollTop === dis) {
+    	if (this.total < this.pipelineParams.pageSize) return
+    		this.pipelineParams.pageSize += 10
+            this.loadSuperiorPipelineId(this.pipelineParams.id) // 请求分页接口
+    	}
+    }
+},
+loadSuperiorPipelineId(id) {
+	this.pipelineParams.id = id
+	getAction(this.url.getPipelines, this.pipelineParams).then(res => {
+		this.superiorPipelines = res.result.records
+		this.total = res.result.total
+	})
+}
+```
+
 ## 三、表单数字校验失效问题
 
 给 `rules` 添加 `type: 'number'`

@@ -1,10 +1,3 @@
-<!--
- * @FileDescription: 
- * @Author: luyaj
- * @Date: 2020-09-23 17:58:16
- * @LastEditors: luyaj
- * @LastEditTime: 2020-09-23 18:03:54
--->
 H5预览pdf，查找了一些方法，最后选用 `vue-pdf`
 
 先安装 `npm i vue-pdf --save`，这里做了分页的效果。

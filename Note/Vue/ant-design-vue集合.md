@@ -99,6 +99,26 @@ methods: {
 }
 ```
 
+### 3.表格tooltip
+
+需求稍复杂（后端未按规定格式，呜呜呜）
+
+```bash
+customRender: (value, row) => {
+  return (
+    <a-tooltip placement="topLeft" >
+      <template slot="title">
+        接单量：{row.list[i].allNum}<br/>
+        完单量：{row.list[i].hasNum}<br/>
+        进行中：{row.list[i].runNum}
+      </template>
+      <span class="blue">{row.list[i].percentageUp || '0.00%'}</span>
+	</a-tooltip>
+  )
+}
+```
+
+
 ## 二、select
 
 #### 1.引入

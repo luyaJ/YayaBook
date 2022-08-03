@@ -84,3 +84,38 @@ filters: {
 ```
 
 如果 `processStep` 值是2，那么页面上将展示“审核通过”。
+
+## 3.directives自定义指令
+
+[文档](https://vuejs.bootcss.com/guide/custom-directive.html)
+
+实现一个元素拖拽功能：
+
+```bash
+ <div v-drag>
+ 	测试拖拽
+ </div>
+```
+
+```js
+export default {
+    directives: {
+          drag(el, bindings) {
+              el.onmousedown = (e) => {
+                  var disx = e.pageX - el.offsetLeft;
+                  var disy = e.pageY - el.offsetTop;
+                  document.onmousemove = (t) => {
+                      el.style.left = t.pageX - disx + "px";
+                      el.style.top = t.pageY - disy + "px";
+                  };
+                  document.onmouseup = () => {
+                      document.onmousemove = document.onmouseup = null;
+                  };
+              };
+         },
+    },
+}
+```
+
+
+

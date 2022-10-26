@@ -15,9 +15,9 @@ integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0v
 crossorigin=""></script>
 ```
 
-## 使用leaflet右键工具
+## 右键工具
 
-[Leaflet.contextmenu github](https://github.com/aratcliffe/Leaflet.contextmenu)
+[Leaflet.contextmenu](https://github.com/aratcliffe/Leaflet.contextmenu)
 
 ## 折线
 
@@ -29,9 +29,18 @@ crossorigin=""></script>
 <script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@latest/dist/leaflet-geoman.min.js"></script>
 ```
 
-
-
 * [绘制带箭头的线条（路径）](https://blog.csdn.net/zcylyzhi4/article/details/115317649)
-
 * [带箭头轨迹以及沿轨迹带方向的动态marker](https://www.jianshu.com/p/b38e65101bc2)
-* 
+
+## 插件
+### Leaflet.markercluster 点聚合
+
+[https://github.com/Leaflet/Leaflet.markercluster/blob/master/README.md](https://github.com/Leaflet/Leaflet.markercluster/blob/master/README.md)
+
+ [Leaflet.markercluster  中文文档](https://blog.csdn.net/SuiFengDieWu/article/details/125886094)
+
+## 一些优化方案
+
+### 如何加载10万数据
+
+* [掘金-加载10完数据](https://juejin.cn/post/6844904199709278221)

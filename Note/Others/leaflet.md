@@ -33,11 +33,33 @@ crossorigin=""></script>
 * [带箭头轨迹以及沿轨迹带方向的动态marker](https://www.jianshu.com/p/b38e65101bc2)
 
 ## 插件
+
 ### Leaflet.markercluster 点聚合
 
 [https://github.com/Leaflet/Leaflet.markercluster/blob/master/README.md](https://github.com/Leaflet/Leaflet.markercluster/blob/master/README.md)
 
  [Leaflet.markercluster  中文文档](https://blog.csdn.net/SuiFengDieWu/article/details/125886094)
+
+ ### L.TileLayer.Colorizr 地图图层颜色
+
+ [L.TileLayer.Colorizr](https://github.com/hnrchrdl/leaflet-tilelayer-colorizr/blob/master/README.md)
+
+缺点：使用之后加载明显变卡顿。
+
+ ```bash
+this.layers = L.tileLayer.colorizr('//webrd0{s}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}', {
+    maxZoom: 18,
+    attribution: "高德地图 AutoNavi.com",
+    subdomains: "1234",
+    colorize: (pixel) => {
+    	// 这个方法用来调整所有的图片上的rgb值，pixel是图片原有的rgb值
+        pixel.r += 13;
+    	pixel.g += 17;
+    	pixel.b += 90;
+    	return pixel
+    }
+}).addTo(this.myMap);
+ ```
 
 ## 一些优化方案
 

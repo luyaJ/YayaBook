@@ -320,11 +320,12 @@ it.only('arry concat', () => {
 });
 ```
 
-## 其他
+###  数组去重
 
-#### 1.去除数组中重复的元素
+#### 1.ES6的Set去重（最简单）
 
 ```js
-let uniqueArray = [...new Set([1, 2, 5, 5, 5, "luya", "luya", 'haha', false, false, true, true])];
+const arr = [1, 2, 5, 5, 5, "luya", "luya", 'haha', false, false, true, true];
+let uniqueArray = [...new Set(arr)];
 // [1, 2, 5, "luya", "haha", false, true]
 ```

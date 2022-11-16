@@ -66,3 +66,10 @@ this.layers = L.tileLayer.colorizr('//webrd0{s}.is.autonavi.com/appmaptile?lang=
 ### 如何加载10万数据
 
 * [掘金-加载10完数据](https://juejin.cn/post/6844904199709278221)
+
+
+## problems
+
+1.共用id的地图，在遇到tab切换时，会出现只展示一小块地图的情况。
+
+解决：`this.leafletMap.invalidateSize(true);`
